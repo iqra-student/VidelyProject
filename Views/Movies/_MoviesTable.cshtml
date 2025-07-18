@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebApplication3.Models.Movie>
+
+<div class="table-responsive table-custom">
+        <table class="table table-bordered table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Genre</th>
+                    <th>Release Date</th>
+                    <th style="width: 150px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var movie in Model)
+                {
+                    <tr>
+                        <td>@movie.Name</td>
+                        <td>@movie.Genre</td>
+                        <td>@movie.ReleaseDate.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <a class="btn btn-sm btn-outline-info" asp-action="Edit" asp-route-id="@movie.id">Edit</a>
+                            <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@movie.id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

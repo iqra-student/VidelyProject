@@ -1,0 +1,129 @@
+﻿
+@model IEnumerable<WebApplication3.Models.Movie>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<!-- Page styling -->
+<style>
+    body {
+        background-color: #f5f5f5;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .movie-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        margin-top: 30px;
+    }
+
+    .movie-header h2 {
+        color: #008080;
+        font-weight: bold;
+    }
+
+    .add-movie-btn {
+        background-color: #008080;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+    .add-movie-btn:hover {
+        background-color: #006666;
+    }
+
+    .search-box {
+        margin-bottom: 20px;
+        width: 300px;
+    }
+
+    .table-custom {
+        background-color: white;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .table th {
+        background-color: #E0F7F7;
+        color: #008080;
+    }
+
+    .table tr:hover {
+        background-color: #f0ffff;
+    }
+
+    .pagination {
+        justify-content: center;
+    }
+
+    .page-item.active .page-link {
+        background-color: #008080;
+        border-color: #008080;
+        color: white;
+    }
+
+    .page-link {
+        color: #008080;
+    }
+
+    .page-link:hover {
+        color: #004c4c;
+    }
+</style>
+
+<div class="container">
+
+    <div class="movie-header">
+        <h2>Movie List</h2>
+        <a class="add-movie-btn" asp-action="Create">+ Add New Movie</a>
+    </div>
+
+    <form asp-action="Random" method="get">
+        <input type="text" id="searchBox" name="searchString" class="form-control search-box" placeholder="Search movies..." />
+
+        <div id="moviesTable">
+            @await Html.PartialAsync("_MoviesTable", Model)
+        </div>
+
+        @section Scripts {
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('#searchBox').on('input', function () {
+                        var searchText = $(this).val();
+
+                        $.ajax({
+                            url: '/Movies/LiveSearch',
+                            data: { searchString: searchText },
+                            success: function (result) {
+                                $('#moviesTable').html(result);
+                            }
+                        });
+                    });
+
+                    $('form').on('submit', function(e) { e.preventDefault(); });
+                });
+            </script>
+        }
+    </form>
+
+    
+
+    <nav>
+        <ul class="pagination">
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                    <a class="page-link" href="?searchString=@ViewBag.SearchString&page=@i">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

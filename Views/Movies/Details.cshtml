@@ -1,0 +1,14 @@
+﻿@model WebApplication3.Models.Movie
+
+    @{
+       ViewData["Title"] = "Movie Details";
+    }
+
+    <h2>@Model.Name</h2>
+
+<ul class="list-group">
+    <li class="list-group-item"><strong>Genre:</strong> @Model.Genre</li>
+    <li class="list-group-item"><strong>Release Date:</strong> @Model.ReleaseDate.ToShortDateString()</li>
+</ul>
+
+<a class="btn btn-primary mt-3" href="/Movies">Back to List</a>

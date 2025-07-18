@@ -1,0 +1,70 @@
+﻿@model List<WebApplication3.Models.Movie>
+
+@{
+    ViewData["Title"] = "Show Movies";
+}
+
+<h2 class="text-teal mb-4 mt-4">Movies for Rent</h2>
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <input type="text" id="searchBox" class="form-control" placeholder="Search movies..." value="@ViewBag.SearchString" />
+    </div>
+</div>
+
+<div id="moviesTable">
+    @await Html.PartialAsync("_SimpleMoviesTable", Model)
+</div>
+
+<nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                <a class="page-link" href="?searchString=@ViewBag.SearchString&page=@i">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+<style>
+    .text-teal {
+        color: #008080;
+    }
+
+    .table thead {
+        background-color: #008080;
+        color: white;
+    }
+
+    .form-control {
+        border-radius: 8px;
+    }
+
+    .pagination .page-link {
+        color: #008080;
+    }
+
+    .pagination .active .page-link {
+        background-color: #008080;
+        border-color: #008080;
+        color: white;
+    }
+</style>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#searchBox').on('keyup', function () {
+                var query = $(this).val();
+
+                $.get('/Movies/SimpleMovies', { searchString: query }, function (data) {
+                    var htmlContent = $(data).find('#moviesTable').html();
+                    $('#moviesTable').html(htmlContent);
+                });
+            });
+        });
+    </script>
+}

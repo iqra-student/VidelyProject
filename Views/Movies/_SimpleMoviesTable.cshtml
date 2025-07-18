@@ -1,0 +1,19 @@
+﻿@model List<WebApplication3.Models.Movie>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Movie Name</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Name</td>
+                <td>@movie.Genre</td>
+            </tr>
+        }
+    </tbody>
+</table>

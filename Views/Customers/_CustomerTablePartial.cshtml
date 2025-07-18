@@ -1,0 +1,16 @@
+﻿@model IEnumerable<WebApplication3.Models.Customer>
+
+@foreach (var customer in Model)
+{
+    <tr>
+        <td>@customer.Name</td>
+        <td>@customer?.MembershipType?.Name</td>
+        <td>
+            <form asp-action="Delete" method="post" onsubmit="return confirmDelete('@customer?.Name');">
+                <input type="hidden" name="id" value="@customer?.Id" />
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+
+        </td>
+    </tr>
+}

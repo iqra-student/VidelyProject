@@ -1,0 +1,37 @@
+﻿@model WebApplication3.Models.Customer
+
+@{
+    ViewData["Title"] = "New Customer";
+}
+
+<h2 style="color:#008080;">New Customer</h2>
+
+<form asp-action="Save" asp-controller="Customers" method="post">
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-3">
+        <label>Date of Birth</label>
+        <input asp-for="BirthDate" type="date" class="form-control" />
+        <span asp-validation-for="BirthDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-3">
+        <label>Membership Type</label>
+        <select asp-for="MembershipTypeId" class="form-control" asp-items="ViewBag.MembershipTypes"></select>
+    </div>
+
+    <div class="form-check mt-3 mb-3">
+        <input asp-for="IsSubscribedToNewsletter" class="form-check-input" />
+        <label asp-for="IsSubscribedToNewsletter" class="form-check-label">Subscribe to Newsletter</label>
+    </div>
+
+    <button type="submit" class="btn" style="background:#008080; color:white;">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
