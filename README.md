@@ -1,70 +1,101 @@
-#Vidly Movie Rental System 🎥
-An ASP.NET Core MVC web application for managing a movie rental platform. The system provides role-based access, allowing both Admins and Customers to perform specific tasks like managing movies, customers, rentals, and performing live searches with pagination.
 
-##🚀 Features##
-🔐 Role-Based Access Control
-**Admin:**
-Manage Movies (CRUD)
-Manage Customers (CRUD)
-View Rentals (Admin doesn't rent movies)
+# **🎥 Vidly Movie Rental System**
 
-**Customer:**
-View Available Movies (with Genre)
-Create New Rental (Rent a movie by entering the movie and customer name)
+An **ASP.NET Core MVC Web Application** for managing a **movie rental platform**.  
+This system provides **role-based access**, allowing both **Admins** and **Customers** to perform specific actions like **managing movies, customers, rentals, and live searching with pagination**.
 
-##🎯 Core Functionalities##
-Login & Registration System (Admin and Customer roles)
-Session-Based Authentication & Custom Middleware Protection
+---
 
-**Movie Management (Admin)**
-Add, Update, Delete Movies
-Live Search & Pagination in Movie List
+## **🚀 Features**
 
-Customer Management (Admin)**
-**
-Add, Update, Delete Customers
-Age Restriction Logic (18+ required for movie rental)
-Live Search & Pagination in Customer List
-Rental System (Customer)
-Rent Movies if they exist in the system
-Rental History Managed in Database
-Navigation Bar
-Dynamic options based on role (Admin/Customer)
+### **🔐 Role-Based Access Control**
 
-##🛠️ Technologies Used##
-ASP.NET Core MVC
-Entity Framework Core (EF Core)
-SQL Server (Local DB)
-Bootstrap 5 (Teal Theme Customization)
-JavaScript & jQuery (Live Search)
-Session Management & Custom Middleware
-LINQ with Skip & Take for Pagination
+**Admin Can:**
+- Manage Movies (Add, Update, Delete)
+- Manage Customers (Add, Update, Delete)
+- View Rentals (Admin does not rent movies)
 
-##How to Run the Project##
-Clone the repo from GitHub
-Open the project in Visual Studio 2022+
-Set the SQL Server Connection String in appsettings.json
-Run the following commands in Package Manager Console:
-Update-Database
-Run the project (F5)
+**Customer Can:**
+- View Available Movies (with Genre)
+- Create New Rental (by entering movie and customer name)
 
-### Admin Login###
-Email: admin@vidly.com
-Password: admin123
+---
 
-**Screens**
-Login / Register Page
-Admin Dashboard: Movies, Customers
-Customer Dashboard: Show Movies, Rent Movie
+## **🎯 Core Functionalities**
 
-**Note**
-This is a practice project designed to understand:
-ASP.NET Core MVC structure
-Middleware implementation
-Role-based session control
-CRUD operations and validations
-Real-time search with AJAX
-Pagination using Skip and Take
+- **Login & Registration System** (Admin and Customer roles)
+- **Session-Based Authentication** & **Custom Middleware Protection**
+- **Movie Management (Admin)**
+  - Add, Update, Delete Movies
+  - **Live Search & Pagination** in Movie List
+- **Customer Management (Admin)**
+  - Add, Update, Delete Customers
+  - **Age Restriction Logic** (Must be **18+** to rent movies)
+  - **Live Search & Pagination** in Customer List
+- **Rental System (Customer)**
+  - Rent movies if they exist in the system
+  - Rental records saved in the database
+- **Dynamic Navigation Bar**
+  - Different options for **Admin** and **Customer**
+
+---
+
+## **🛠️ Technologies Used**
+
+- **ASP.NET Core MVC**
+- **Entity Framework Core (EF Core)**
+- **SQL Server (LocalDB)**
+- **Bootstrap 5** (with **Teal Theme Customization**)
+- **JavaScript & jQuery** (Live Search without page reload)
+- **Session Management & Custom Middleware**
+- **LINQ** (`Skip` & `Take` for Pagination)
+
+---
+
+## **💻 How to Run the Project**
+
+1. **Clone the Repository**
+
+2. **Open the project in Visual Studio 2022+**
+
+3. **Set SQL Server Connection String** in `appsettings.json`
+
+4. Run the following in **Package Manager Console:**
+
+
+5. **Run the project** (`F5` or `Ctrl + F5`)
+
+---
+
+## **🔑 Admin Login**
+
+- **Email:** `admin@vidly.com`
+- **Password:** `admin123`
+
+---
+
+## **📱 Screens Overview**
+
+- **Login / Register Page**
+- **Admin Dashboard**: Movies Management, Customers Management
+- **Customer Dashboard**: Show Movies, New Rental
+
+---
+
+## **📝 Note**
+
+This is a **practice project** designed to understand:
+
+- **ASP.NET Core MVC structure**
+- **Custom Middleware implementation**
+- **Role-based session control**
+- **CRUD operations and validations**
+- **Real-time AJAX search**
+- **Pagination using LINQ (Skip & Take)**
+
+---
+
+
 
 <img width="1366" height="652" alt="image" src="https://github.com/user-attachments/assets/8b05d22a-559f-40aa-8dc7-6ad66640d594" />
 <img width="1366" height="650" alt="image" src="https://github.com/user-attachments/assets/bf284422-8b0a-4070-9cf0-0130c868b69c" />
